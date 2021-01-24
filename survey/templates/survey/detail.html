@@ -1,0 +1,40 @@
+<head>
+    <style>
+        .container{
+            max-width: 50rem;
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+        }
+        h1{
+            text-align: center;
+        }
+        table, th, td{
+            border: 1px solid red;
+        }
+        table{
+            border-collapse: collapse;
+        }
+        .choice{
+            min-width: 15vw;
+        }
+    </style>
+</head>
+<div class="container">
+    <h1>{{ question.question_text }}</h1>
+    <table>
+        <tr>
+            <th>No.</th>
+            <th>Options</th>
+            <th>Votes</th>
+        </tr>
+        {% for choice in question.choice_set.all %}
+            <tr>
+                <td>{{forloop.counter}}.</td>
+            <td class="choice"> {{ choice.choice_text }}</td>
+            <td>{{choice.votes}}</td>
+            </tr>
+            
+        {% endfor %}
+    </table>
+</div>
